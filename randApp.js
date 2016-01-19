@@ -1,9 +1,10 @@
 'use strict'
+
 var imagesArray = ['bag.jpg', 'banana.jpg','boots.jpg', 'chair.jpg', 'cthulhu.jpg','dragon.jpg','pen.jpg', 'scissors.jpg', 'shark.jpg', 'sweep.png', 'unicorn.jpg', 'usb.gif', 'water-can.jpg', 'wine-glass.jpg'];
 
-var first = document.getElementById('image1');
-var second = document.getElementById('image2');
-var third = document.getElementById('image3');
+var image1 = document.getElementById('image1');
+var image2 = document.getElementById('image2');
+var image3 = document.getElementById('image3');
 
 function getRandomImage1() {
   var randomNumber = Math.floor(Math.random() * imagesArray.length);
@@ -20,27 +21,26 @@ function getRandomImage3() {
 
 
 
-    first.addEventListener('click', handleClickOnFirst);
-    second.addEventListener('click', handleClickOnSecond);
-    third.addEventListener('click', handleClickOnThird);
+    image1.addEventListener('click', handleClickOnFirst);
+    image2.addEventListener('click', handleClickOnSecond);
+    image3.addEventListener('click', handleClickOnThird);
 
-    var firstClicks = 0;
-    var secondClicks = 0;
-    var thirdClicks = 0;
+    var image1Clicks = 0;
+    var image2Clicks = 0;
+    var image3Clicks = 0;
 
     function handleClickOnFirst() {
-      firstClicks += 1;
-      first.textContent = 'first was clicked on' + firstClicks + ' times';
-      if (firstClicks % 3  === 0)
-      first.textContent = 'You\'re finished!'
+      image1Clicks += 1;
+      console.log('handleClickOnFirst');
     }
     function handleClickOnSecond() {
-      secondClicks += 1;
-      second.textContent = 'second was clicked on' + secondClicks + ' times';
+      image2Clicks += 1;
+      console.log('handleClickOnSecond');
     }
     function handleClickOnThird() {
-      thirdClicks += 1;
-      third.textContent = 'third was clicked on' + thirdClicks + ' times';
+      image3Clicks += 1;
+      console.log('handleClickOnThird');
+      // third.textContent = 'third was clicked on' + thirdClicks + ' times';
     }
 
     getRandomImage1();
@@ -48,8 +48,8 @@ function getRandomImage3() {
     getRandomImage3();
 
 
-      while (image1 === image2 || image2 === image3 || image1 === image3) {
-          getRandomImage1();
-          getRandomImage2();
-          getRandomImage3();
-      }
+      // while (image1 === image2 || image2 === image3 || image1 === image3) {
+      //     getRandomImage1();
+      //     getRandomImage2();
+      //     getRandomImage3();
+      // }

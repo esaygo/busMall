@@ -7,20 +7,24 @@ header {
   justify-content: space-around;
   padding: 10px;
   background-color: lightgreen;
+
 }
 #image1 {
-  height: 250px;
-  width: 250px;
+  height: 300px;
+  width: 300px;
   background-color: lightgreen;
+  border-style: solid;
 }
 #image2 {
-  height: 250px;
-  width: 250px;
+  height: 300px;
+  width: 300px;
   background-color: lavender;
+  border-style: solid;
 }
 #image3 {
-  height: 250px;
-  width: 250px;
+  border-style: solid;
+  height: 300px;
+  width: 300px;
   background-color: beige;
 }
 footer {
