@@ -1,4 +1,4 @@
-
+'use strict'
 var imagesArray = ['bag.jpg', 'banana.jpg','boots.jpg', 'chair.jpg', 'cthulhu.jpg','dragon.jpg','pen.jpg', 'scissors.jpg', 'shark.jpg', 'sweep.png', 'unicorn.jpg', 'usb.gif', 'water-can.jpg', 'wine-glass.jpg'];
 
 var first = document.getElementById('image1');
@@ -14,9 +14,10 @@ function getRandomImage2() {
   document.getElementById('image2').src= "images-to-be-used/" +  imagesArray[randomNumber];
   }
 function getRandomImage3() {
-    var randomNumber = Math.floor(Math.random() * imagesArray.length);
-    document.getElementById('image3').src= "images-to-be-used/" +  imagesArray[randomNumber];
-    }
+  var randomNumber = Math.floor(Math.random() * imagesArray.length);
+  document.getElementById('image3').src= "images-to-be-used/" +  imagesArray[randomNumber];
+  }
+
 
 
     first.addEventListener('click', handleClickOnFirst);
@@ -41,6 +42,12 @@ function getRandomImage3() {
       thirdClicks += 1;
       third.textContent = 'third was clicked on' + thirdClicks + ' times';
     }
+
     getRandomImage1();
     getRandomImage2();
     getRandomImage3();
+
+
+      // while (image1 === image1 || image1 === image2 || image1 === image3 || image2 === image2 || image2 === image3 || image3 === image3) {
+      //     getRandomImage1();
+      // }
