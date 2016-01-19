@@ -19,8 +19,6 @@ function getRandomImage3() {
   document.getElementById('image3').src= "images-to-be-used/" +  imagesArray[randomNumber];
   }
 
-
-
     image1.addEventListener('click', handleClickOnFirst);
     image2.addEventListener('click', handleClickOnSecond);
     image3.addEventListener('click', handleClickOnThird);
@@ -40,16 +38,15 @@ function getRandomImage3() {
     function handleClickOnThird() {
       image3Clicks += 1;
       console.log('handleClickOnThird');
-      // third.textContent = 'third was clicked on' + thirdClicks + ' times';
     }
 
     getRandomImage1();
     getRandomImage2();
     getRandomImage3();
 
-
-      // while (image1 === image2 || image2 === image3 || image1 === image3) {
-      //     getRandomImage1();
-      //     getRandomImage2();
-      //     getRandomImage3();
-      // }
+      while (image1.src === image2.src || image2.src === image3.src || image1.src === image3.src) {
+          console.log('duplicates prevented');
+          getRandomImage1();
+          getRandomImage2();
+          getRandomImage3();
+      };
