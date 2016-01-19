@@ -48,6 +48,8 @@ function getRandomImage3() {
     getRandomImage3();
 
 
-      // while (image1 === image1 || image1 === image2 || image1 === image3 || image2 === image2 || image2 === image3 || image3 === image3) {
-      //     getRandomImage1();
-      // }
+      while (image1 === image2 || image2 === image3 || image1 === image3) {
+          getRandomImage1();
+          getRandomImage2();
+          getRandomImage3();
+      }
