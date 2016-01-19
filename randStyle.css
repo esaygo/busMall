@@ -6,7 +6,7 @@ header {
   display: flex;
   justify-content:space-around;
   padding: 10px;
-  background-color: yellow;
+  background-color: lavender;
 }
 #image1 {
   height: 250px;

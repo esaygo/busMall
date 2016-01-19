@@ -1,4 +1,4 @@
-
+'use strict'
 var imagesArray = ['bag.jpg', 'banana.jpg','boots.jpg', 'chair.jpg', 'cthulhu.jpg','dragon.jpg','pen.jpg', 'scissors.jpg', 'shark.jpg', 'sweep.png', 'unicorn.jpg', 'usb.gif', 'water-can.jpg', 'wine-glass.jpg'];
 
 var first = document.getElementById('image1');
