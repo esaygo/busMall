@@ -1,12 +1,29 @@
 header {
+  text-align: center;
   background-color: teal;
 }
+#image-container {
+  display: flex;
+  justify-content:space-around;
+  padding: 10px;
+  background-color: yellow;
+}
 #image1 {
+  height: 250px;
+  width: 250px;
   background-color: lightgreen;
 }
 #image2 {
+  height: 250px;
+  width: 250px;
   background-color: lavender;
 }
 #image3 {
+  height: 250px;
+  width: 250px;
   background-color: beige;
+}
+footer {
+  background-color: green;
+  text-align: center;
 }
