@@ -1,3 +1,4 @@
+
 header {
   text-align: center;
   background-color: teal;
@@ -7,7 +8,6 @@ header {
   justify-content: space-around;
   padding: 10px;
   background-color: lightgreen;
-
 }
 #image1 {
   height: 300px;
