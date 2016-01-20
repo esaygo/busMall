@@ -1,7 +1,5 @@
 'use strict'
 
-function busMall() {
-
 var imagesArray = [];
 
 function Image(productName, filePath) {
@@ -36,6 +34,7 @@ function getThreeImages() {
   getRandomImage1();
   getRandomImage2();
   getRandomImage3();
+  duplicatePreventer();
 }
 function duplicatePreventer() {
   while (image1.src === image2.src || image1.src === image3.src || image2.src === image3.src){
@@ -65,19 +64,13 @@ var image3Clicks = 0;
 function handleClickOnFirst() {
   imagesArray[randomNumber1].numClicks += 1;
   getThreeImages();
-  duplicatePreventer();//replaces the while loop
 }
 function handleClickOnSecond() {
   imagesArray[randomNumber2].numClicks += 1;
   getThreeImages();
-  duplicatePreventer();
 }
 function handleClickOnThird() {
   imagesArray[randomNumber3].numClicks += 1;
   getThreeImages();
-  duplicatePreventer();
 }
 getThreeImages();
-duplicatePreventer(); //replaces the while loop
-}
-busMall();
