@@ -1,22 +1,51 @@
 'use strict'
 
-var imagesArray = ['bag.jpg', 'banana.jpg','boots.jpg', 'chair.jpg', 'cthulhu.jpg','dragon.jpg','pen.jpg', 'scissors.jpg', 'shark.jpg', 'sweep.png', 'unicorn.jpg', 'usb.gif', 'water-can.jpg', 'wine-glass.jpg'];
+var imagesArray = [];
+
+function Image(productName, filePath) {
+this.name = productName;
+this.filePath = filePath;
+this.numClicks = 0;
+
+imagesArray.push(this);
+}
+
+var bagImage = new Image('bag','bag.jpg');
+var bananaImage = new Image('banana', 'banana.jpg');
+var bootsImage = new Image('boots', 'boots.jpg');
+var chairImage = new Image('chair', 'chair.jpg');
+var cthulhuImage = new Image('cthulhu', 'cthulhu.jpg');
+var dragonImage = new Image('dragon', 'dragon.jpg');
+var penImage = new Image('pen', 'pen.jpg');
+var scissorsImage = new Image('scissors', 'scissors.jpg');
+var sharkImage = new Image('shark', 'shark.jpg');
+var sweepImage = new Image('sweep', 'sweep.png');
+var unicornImage = new Image('unicorn', 'unicorn.jpg');
+var usbImage = new Image('usb', 'usb.gif');
+var water_canImage = new Image('water_can', 'water-can.jpg');
+var wine_glassImage = new Image('wine_glass', 'wine-glass.jpg');
+
+
 
 var image1 = document.getElementById('image1');
 var image2 = document.getElementById('image2');
 var image3 = document.getElementById('image3');
+var randomNumber1 = 0;
+var randomNumber2 = 0;
+var randomNumber3 = 0;
 
 function getRandomImage1() {
-  var randomNumber = Math.floor(Math.random() * imagesArray.length);
-  document.getElementById('image1').src= "images-to-be-used/" +  imagesArray[randomNumber];
+  randomNumber1 = Math.floor(Math.random() * imagesArray.length);
+  document.getElementById('image1').src= "images-to-be-used/" +  imagesArray[randomNumber1].filePath;
+
   }
 function getRandomImage2() {
-  var randomNumber = Math.floor(Math.random() * imagesArray.length);
-  document.getElementById('image2').src= "images-to-be-used/" +  imagesArray[randomNumber];
+  randomNumber2 = Math.floor(Math.random() * imagesArray.length);
+  document.getElementById('image2').src= "images-to-be-used/" +  imagesArray[randomNumber2].filePath;
   }
 function getRandomImage3() {
-  var randomNumber = Math.floor(Math.random() * imagesArray.length);
-  document.getElementById('image3').src= "images-to-be-used/" +  imagesArray[randomNumber];
+  randomNumber3 = Math.floor(Math.random() * imagesArray.length);
+  document.getElementById('image3').src= "images-to-be-used/" +  imagesArray[randomNumber3].filePath;
   }
 
     image1.addEventListener('click', handleClickOnFirst);
@@ -28,16 +57,46 @@ function getRandomImage3() {
     var image3Clicks = 0;
 
     function handleClickOnFirst() {
-      image1Clicks += 1;
+      imagesArray[randomNumber1].numClicks += 1;
       console.log('handleClickOnFirst');
-    }
+      getRandomImage1();
+      getRandomImage2();
+      getRandomImage3();
+      while (image1.src === image2.src || image2.src === image3.src || image1.src === image3.src) {
+          console.log('duplicates prevented');
+          getRandomImage1();
+          getRandomImage2();
+          getRandomImage3();
+      };
+     }
     function handleClickOnSecond() {
-      image2Clicks += 1;
+      imagesArray[randomNumber2].numClicks += 1;
       console.log('handleClickOnSecond');
+      getRandomImage1();
+      getRandomImage2();
+      getRandomImage3();
+      while (image1.src === image2.src || image2.src === image3.src || image1.src === image3.src) {
+          console.log('duplicates prevented');
+          getRandomImage1();
+          getRandomImage2();
+          getRandomImage3();
+      };
     }
+
+
     function handleClickOnThird() {
-      image3Clicks += 1;
+      imagesArray[randomNumber3].numClicks += 1;
       console.log('handleClickOnThird');
+      getRandomImage1();
+      getRandomImage2();
+      getRandomImage3();
+      while (image1.src === image2.src || image2.src === image3.src || image1.src === image3.src) {
+          console.log('duplicates prevented');
+          getRandomImage1();
+          getRandomImage2();
+          getRandomImage3();
+      };
+
     }
 
     getRandomImage1();
