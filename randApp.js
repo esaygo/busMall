@@ -54,9 +54,9 @@ function getRandomImage3() {
   randomNumber3 = Math.floor(Math.random() * imagesArray.length);
   document.getElementById('image3').src= "images-to-be-used/" +  imagesArray[randomNumber3].filePath;
 }
-image1.addEventListener('click', handleClickOnFirst);
-image2.addEventListener('click', handleClickOnSecond);
-image3.addEventListener('click', handleClickOnThird);
+  image1.addEventListener('click', handleClickOnFirst);
+  image2.addEventListener('click', handleClickOnSecond);
+  image3.addEventListener('click', handleClickOnThird);
 
 var image1Clicks = 0;
 var image2Clicks = 0;
