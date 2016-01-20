@@ -1,5 +1,7 @@
 'use strict'
 
+function busMall() {
+
 var imagesArray = [];
 
 function Image(productName, filePath) {
@@ -20,7 +22,7 @@ var sharkImage = new Image('shark', 'shark.jpg');
 var sweepImage = new Image('sweep', 'sweep.png');
 var unicornImage = new Image('unicorn', 'unicorn.jpg');
 var usbImage = new Image('usb', 'usb.gif');
-var water_canImage = new Image('water_can', 'water-can.jpg');
+var water_canImage = new Image('water_can', 'water-can.jpg');// BEWARE: underscore vs. dash
 var wine_glassImage = new Image('wine_glass', 'wine-glass.jpg');
 
 var image1 = document.getElementById('image1');
@@ -63,7 +65,7 @@ var image3Clicks = 0;
 function handleClickOnFirst() {
   imagesArray[randomNumber1].numClicks += 1;
   getThreeImages();
-  duplicatePreventer();
+  duplicatePreventer();//replaces the while loop
 }
 function handleClickOnSecond() {
   imagesArray[randomNumber2].numClicks += 1;
@@ -73,7 +75,9 @@ function handleClickOnSecond() {
 function handleClickOnThird() {
   imagesArray[randomNumber3].numClicks += 1;
   getThreeImages();
-  duplicatePreventer();//replaces the while loop
+  duplicatePreventer();
 }
 getThreeImages();
 duplicatePreventer(); //replaces the while loop
+}
+busMall();
