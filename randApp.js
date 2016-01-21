@@ -32,7 +32,7 @@ var randomNumber2 = 0;
 var randomNumber3 = 0;
 var globalClickTracker = 0;
 
-var arrayArrays = [[],[],[]];
+var arrayOfArrays = [[],[],[]];
 
 function getThreeImages() {
   getRandomImage1();
@@ -99,16 +99,14 @@ getThreeImages();
 
 function handleButton() {
   for (var i = 0; i < imagesArray.length; i++) {
-    // document.getElementById('tableData').innerHTML += imagesArray[i].productName + 'this works';
-    // console.log('this works');
   }
   makeChart();
 }
 function makeChart() {
   for (var i = 0; i < imagesArray.length; i++) {
-    arrayArrays[0][i] = imagesArray[i].productName;
-    arrayArrays[1][i] = imagesArray[i].numClicks;
-    arrayArrays[2][i] = imagesArray[i].timesDisplayed;
+    arrayOfArrays[0][i] = imagesArray[i].productName;
+    arrayOfArrays[1][i] = imagesArray[i].numClicks;
+    arrayOfArrays[2][i] = imagesArray[i].timesDisplayed;
   }
   var data = {
     labels: ["bag", "banana", "chair", "cthulhu", "dragon", "pen", "scissors", "shark", "sweep", "unicorn", "usb", "water_can", "wine_glass"],
@@ -116,12 +114,12 @@ function makeChart() {
       {
         fillColor: "rgba(220,220,220,0.2)",
         strokeColor: "rgba(220,220,220,1)",
-        data: arrayArrays[1]
+        data: arrayOfArrays[1]
       },
       {
         fillColor: "rgba(151,187,205,0.2)",
         strokeColor: "rgba(151,187,205,1)",
-        data: arrayArrays[2]
+        data: arrayOfArrays[2]
       }
     ]
   };
