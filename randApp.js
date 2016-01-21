@@ -3,9 +3,10 @@
 var imagesArray = [];
 
 function Image(productName, filePath) {
-  this.name = productName;
+  this.productName = productName;
   this.filePath = filePath;
   this.numClicks = 0;
+  this.timesDisplayed = 0;
   imagesArray.push(this);
 }
 var bagImage = new Image('bag','bag.jpg');
@@ -29,6 +30,9 @@ var image3 = document.getElementById('image3');
 var randomNumber1 = 0;
 var randomNumber2 = 0;
 var randomNumber3 = 0;
+var globalClickTracker = 0;
+
+var arrayArrays = [[],[],[]];
 
 function getThreeImages() {
   getRandomImage1();
@@ -53,24 +57,130 @@ function getRandomImage3() {
   randomNumber3 = Math.floor(Math.random() * imagesArray.length);
   document.getElementById('image3').src= "images-to-be-used/" +  imagesArray[randomNumber3].filePath;
 }
-  image1.addEventListener('click', handleClickOnFirst);
-  image2.addEventListener('click', handleClickOnSecond);
-  image3.addEventListener('click', handleClickOnThird);
+
+var button = document.getElementById('loadButton');
 
 var image1Clicks = 0;
 var image2Clicks = 0;
 var image3Clicks = 0;
 
 function handleClickOnFirst() {
+  imagesArray[randomNumber1].timesDisplayed += 1;
+  globalClickTracker += 1;
+  if (globalClickTracker === 3) {
+    button.removeAttribute('hidden');
+  }
   imagesArray[randomNumber1].numClicks += 1;
   getThreeImages();
 }
 function handleClickOnSecond() {
+  imagesArray[randomNumber2].timesDisplayed += 1;
+  globalClickTracker += 1;
+  if (globalClickTracker === 3) {
+    button.removeAttribute('hidden');
+  }
   imagesArray[randomNumber2].numClicks += 1;
   getThreeImages();
 }
 function handleClickOnThird() {
+  imagesArray[randomNumber3].timesDisplayed += 1;
+  globalClickTracker += 1;
+  if (globalClickTracker === 3) {
+    button.removeAttribute('hidden');
+  }
   imagesArray[randomNumber3].numClicks += 1;
   getThreeImages();
 }
+image1.addEventListener('click', handleClickOnFirst);
+image2.addEventListener('click', handleClickOnSecond);
+image3.addEventListener('click', handleClickOnThird);
+button.addEventListener('click', handleButton);
 getThreeImages();
+
+
+function handleButton() {
+  for (var i = 0; i < imagesArray.length; i++) {
+    document.getElementById('tableData').innerHTML += imagesArray[i].productName + 'this works';
+    console.log('this works');
+  }
+  makeChart();
+}
+
+function makeChart() {
+  for (var i = 0; i < imagesArray.length; i++) {
+    arrayArrays[0][i] = imagesArray[i].productName;
+    arrayArrays[1][i] = imagesArray[i].numClicks;
+    arrayArrays[2][i] = imagesArray[i].timesDisplayed;
+  }
+
+
+  var data = {
+    labels: ["bag", "banana", "chair", "cthulhu", "dragon", "pen", "scissors", "shark", "sweep", "unicorn", "usb", "water_can", "wine_glass"],
+    datasets: [
+      {
+        // label: "My First dataset",
+        fillColor: "rgba(220,220,220,0.2)",
+        strokeColor: "rgba(220,220,220,1)",
+        // pointColor: "rgba(220,220,220,1)",
+        // pointStrokeColor: "#fff",
+        // pointHighlightFill: "#fff",
+        // pointHighlightStroke: "rgba(220,220,220,1)",
+        data: arrayArrays[1]
+      },
+      {
+        // label: "My Second dataset",
+        fillColor: "rgba(151,187,205,0.2)",
+        strokeColor: "rgba(151,187,205,1)",
+        // pointColor: "rgba(151,187,205,1)",
+        // pointStrokeColor: "#fff",
+        // pointHighlightFill: "#fff",
+        // pointHighlightStroke: "rgba(151,187,205,1)",
+        data: arrayArrays[2]
+      }
+    ]
+  };
+  var getChart = document.getElementById('canvas').getContext('2d');
+  new Chart(getChart).Bar(data);
+  console.log('I am here');
+}
+
+// Image.prototype.renderShopRow = function() {
+//   getThreeImages();
+//   var tableDataEl = document.getElementById('tableData');
+//
+//   var trEl = document.createElement('tr');
+//   var tdEl = document.createElement('td');
+//   tdEl.textContent = this.productName;
+//   trEl.appendChild(tdEl);
+//   var tdElem = document.createElement('td');
+//   tdElem.textContent = this.numClicks;
+//   trEl.appendChild(tdElem);
+//
+//   for (var i = 0; i < this.imagesArray.length; i++) {
+//
+//     var tdEl = document.createElement('td');
+//     tdEl.textContent = this.imagesArray[i];
+//     trEl.appendChild(tdEl);
+//   }
+//   tableDataEl.appendChild(trEl);
+// }
+//
+// function renderHeaderRow() {
+//   var tableDataEl = document.getElementById('tableData');
+//
+//   var trEl = document.createElement('tr');
+//   var thEl = document.createElement('th');
+//   thEl.textContent = 'productName';
+//   trEl.appendChild(thEl);
+//   var thElem = document.createElement('th');
+//   thElem.textContent = 'numClicks';
+//   trEl.appendChild(thElem);
+//
+// for (var i = 0; i < imagesArray.length; i++) {
+//   var tdEl = document.createElement('td');
+//   tdEl.textContent = imagesArray[i];
+//   trEl.appendChild(tdEl);
+// }
+// tableDataEl.appendChild(trEl);
+// }
+// renderHeaderRow();
