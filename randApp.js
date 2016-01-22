@@ -1,32 +1,32 @@
 'use strict'
 
 var imagesArray = [];
+var namesArray = ['bag','banana','boots','chair','cthulhu','dragon','pen','scissors','shark','sweep','unicorn','usb','water_can','wine_glass'];
+var pathArray = ['bag.jpg','banana.jpg','boots.jpg','chair.jpg','cthulhu.jpg','dragon.jpg','pen.jpg','scissors.jpg','shark.jpg','sweep.jpg','unicorn.jpg','usb.jpg','water_can.jpg','wine_glass.jpg'];
+var getChart = document.getElementById('canvas').getContext('2d');
+var chartData = localStorage.getItem('chartPersist');
+if(chartData) {
+var data = JSON.parse(chartData);
+} else {
+  console.log('Local storage empty! Initializing!');
+  localStorage.setItem('chartPersist', JSON.stringify(data));
+  }
 
 function Image(productName, filePath) {
   this.productName = productName;
   this.filePath = filePath;
   this.numClicks = 0;
   this.timesDisplayed = 0;
-  imagesArray.push(this);
+  // imagesArray.push(this);
 }
-var bagImage = new Image('bag','bag.jpg');
-var bananaImage = new Image('banana', 'banana.jpg');
-var bootsImage = new Image('boots', 'boots.jpg');
-var chairImage = new Image('chair', 'chair.jpg');
-var cthulhuImage = new Image('cthulhu', 'cthulhu.jpg');
-var dragonImage = new Image('dragon', 'dragon.jpg');
-var penImage = new Image('pen', 'pen.jpg');
-var scissorsImage = new Image('scissors', 'scissors.jpg');
-var sharkImage = new Image('shark', 'shark.jpg');
-var sweepImage = new Image('sweep', 'sweep.png');
-var unicornImage = new Image('unicorn', 'unicorn.jpg');
-var usbImage = new Image('usb', 'usb.gif');
-var water_canImage = new Image('water_can', 'water-can.jpg');// BEWARE: underscore vs. dash
-var wine_glassImage = new Image('wine_glass', 'wine-glass.jpg');
+for(var i = 0; i < namesArray.length; i++) {
+  var prodArray = new Image(namesArray[i],pathArray[i]);
+  imagesArray.push(prodArray);
+}
 
-var image1 = document.getElementById('image1');
-var image2 = document.getElementById('image2');
-var image3 = document.getElementById('image3');
+var image1 = document.getElementById('1');
+var image2 = document.getElementById('2');
+var image3 = document.getElementById('3');
 var randomNumber1 = 0;
 var randomNumber2 = 0;
 var randomNumber3 = 0;
@@ -47,15 +47,15 @@ function duplicatePreventer() {
 }
 function getRandomImage1() {
   randomNumber1 = Math.floor(Math.random() * imagesArray.length);
-  document.getElementById('image1').src= "images-to-be-used/" +  imagesArray[randomNumber1].filePath;
+  document.getElementById('1').src= "images-to-be-used/" +  pathArray[randomNumber1].filePath;
 }
 function getRandomImage2() {
   randomNumber2 = Math.floor(Math.random() * imagesArray.length);
-  document.getElementById('image2').src= "images-to-be-used/" +  imagesArray[randomNumber2].filePath;
+  document.getElementById('2').src= "images-to-be-used/" +  pathArray[randomNumber2].filePath;
 }
 function getRandomImage3() {
   randomNumber3 = Math.floor(Math.random() * imagesArray.length);
-  document.getElementById('image3').src= "images-to-be-used/" +  imagesArray[randomNumber3].filePath;
+  document.getElementById('3').src= "images-to-be-used/" +  pathArray[randomNumber3].filePath;
 }
 
 var button = document.getElementById('loadButton');
@@ -64,7 +64,7 @@ var image1Clicks = 0;
 var image2Clicks = 0;
 var image3Clicks = 0;
 
-function handleClickOnFirst() {
+function handleClick() {
   imagesArray[randomNumber1].timesDisplayed += 1;
   globalClickTracker += 1;
   if (globalClickTracker === 15) {
@@ -73,36 +73,15 @@ function handleClickOnFirst() {
   imagesArray[randomNumber1].numClicks += 1;
   getThreeImages();
 }
-function handleClickOnSecond() {
-  imagesArray[randomNumber2].timesDisplayed += 1;
-  globalClickTracker += 1;
-  if (globalClickTracker === 15) {
-    button.removeAttribute('hidden');
-  }
-  imagesArray[randomNumber2].numClicks += 1;
-  getThreeImages();
-}
-function handleClickOnThird() {
-  imagesArray[randomNumber3].timesDisplayed += 1;
-  globalClickTracker += 1;
-  if (globalClickTracker === 15) {
-    button.removeAttribute('hidden');
-  }
-  imagesArray[randomNumber3].numClicks += 1;
-  getThreeImages();
-}
-image1.addEventListener('click', handleClickOnFirst);
-image2.addEventListener('click', handleClickOnSecond);
-image3.addEventListener('click', handleClickOnThird);
+image1.addEventListener('click', handleClick);
+image2.addEventListener('click', handleClick);
+image3.addEventListener('click', handleClick);
 button.addEventListener('click', handleButton);
 getThreeImages();
 
 function handleButton() {
   for (var i = 0; i < imagesArray.length; i++) {
   }
-  makeChart();
-}
-function makeChart() {
   for (var i = 0; i < imagesArray.length; i++) {
     arrayOfArrays[0][i] = imagesArray[i].productName;
     arrayOfArrays[1][i] = imagesArray[i].numClicks;
@@ -123,7 +102,9 @@ function makeChart() {
       }
     ]
   };
-  var getChart = document.getElementById('canvas').getContext('2d');
-  new Chart(getChart).Bar(data);
-  console.log('I am here');
 }
+
+function makeChart(data) {
+  new Chart(getChart).Bar(data);
+  chartExists = true;
+  }

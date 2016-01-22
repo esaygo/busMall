@@ -9,24 +9,24 @@ header {
   padding: 10px;
   background-color: lightgreen;
 }
-#image1 {
+.vote {
   height: 300px;
   width: 300px;
   background-color: lightgreen;
   border-style: solid;
 }
-#image2 {
+/*#2 {
   height: 300px;
   width: 300px;
   background-color: lavender;
   border-style: solid;
 }
-#image3 {
+#3 {
   border-style: solid;
   height: 300px;
   width: 300px;
   background-color: beige;
-}
+}*/
 footer {
   background-color: green;
   text-align: center;
